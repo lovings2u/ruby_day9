@@ -1,0 +1,5 @@
+<%= form_tag("/boards") do %>
+    <%= text_field_tag(:title) %>
+    <%= text_area_tag(:contents) %>
+    <%= submit_tag("작성하기") %>
+<% end %>

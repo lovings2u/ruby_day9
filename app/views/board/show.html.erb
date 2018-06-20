@@ -1,0 +1,6 @@
+<h2><%= @post.title %></h2>
+<hr>
+<p><%= @post.contents %></p>
+<%= link_to "목록", "/" %>
+<%= link_to "수정", "/board/#{@post.id}/edit" %>
+<%= link_to "삭제", "/board/#{@post.id}", method: "delete" %>

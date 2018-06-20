@@ -1,0 +1,5 @@
+<%= form_tag("/board/#{@post.id}", method: "patch") do %>
+    <%= text_field_tag(:title, @post.title) %>
+    <%= text_area_tag(:contents, @post.contents) %>
+    <%= submit_tag("수정하기") %>
+<% end %>
