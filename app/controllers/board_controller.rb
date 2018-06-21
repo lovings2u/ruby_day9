@@ -1,10 +1,12 @@
 class BoardController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  # before_action :set_post, except: [:index, :new, :create]
   def index
     @posts = Post.all
+    puts current_user
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -20,20 +22,21 @@ class BoardController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
   
   def update
-    post = Post.find(params[:id])
-    post.title = params[:title]
-    post.contents = params[:contents]
-    post.save
-    redirect_to "/board/#{post.id}"
+    @post.title = params[:title]
+    @post.contents = params[:contents]
+    @post.save
+    redirect_to "/board/#{@post.id}"
   end
   
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    @post.destroy
     redirect_to "/boards"
+  end
+  
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
