@@ -3,15 +3,40 @@
   <head>
     <title>DaumCafeApp</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="center">
   <% flash.each do |k,v| %>
-    <p><%= v %></p>
+  <script>
+    toastr.<%= k %>("<%= v %>")
+  </script>
   <% end %>
+  <% unless params[:controller].eql? "user" %>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Company name</a>
+    
+    <ul class="navbar-nav px-3">
+    <% if user_signed_in? %>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link"><%= current_user.user_name %></a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/logout">Sign out</a>
+      </li>
+    <% else %>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/sign_in">Sign in</a>
+      </li>
+    <% end %>
+    </ul>
+  </nav>
+  <% end %>
+  
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>

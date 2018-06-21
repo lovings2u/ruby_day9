@@ -1,5 +1,5 @@
 <%= form_tag("/board/#{@post.id}", method: "patch") do %>
-    <%= text_field_tag(:title, @post.title) %>
-    <%= text_area_tag(:contents, @post.contents) %>
-    <%= submit_tag("수정하기") %>
+    <%= text_field_tag(:title, @post.title, class: "form-control text-center") %>
+    <%= text_area_tag(:contents, @post.contents, class: "form-control text-center", rows: 6) %>
+    <%= submit_tag("수정하기", class: "btn btn-warning text-white mt-10") %>
 <% end %>

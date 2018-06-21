@@ -13,11 +13,11 @@ class UserController < ApplicationController
   
   def create
     user = User.new
-    user.user_id = params[:user_id]
+    user.user_name = params[:user_id]
     user.password = params[:password]
     user.ip_address = request.ip
     user.save
-    redirect_to "/user/#{user.id}"
+    redirect_to "/boards"
   end
 
   def edit
@@ -41,12 +41,12 @@ class UserController < ApplicationController
     # 실제로 로그인이 이루어지는 곳
     id = params[:user_id]
     pw = params[:password]
-    user = User.find_by_user_id(id)
+    user = User.find_by_user_name(id)
     if !user.nil? and user.password.eql?(pw)
       # 해당 user_id로 가입한 유저가 있고, 패스워드도 일치하는 경우
       session[:current_user] = user.id
       flash[:success] = "로그인에 성공했습니다."
-      redirect_to '/users'
+      redirect_to '/boards'
     else
       # 가입한 user_id가 없거나, 패스워드가 틀린경우
       flash[:error] = "가입된 유저가 아니거나, 비밀번호가 틀립니다."
@@ -57,6 +57,6 @@ class UserController < ApplicationController
   def logout
     session.delete(:current_user)
     flash[:success] = "로그아웃에 성공했습니다."
-    redirect_to '/users'
+    redirect_to '/boards'
   end
 end

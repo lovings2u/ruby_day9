@@ -39,7 +39,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (8.6.2)
+      execjs
     bindex (0.5.0)
+    bootstrap (4.1.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     coffee-rails (4.2.2)
@@ -81,6 +87,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
+    popper_js (1.12.9)
     puma (3.11.4)
     rack (2.0.5)
     rack-test (0.6.3)
@@ -139,6 +146,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    toastr-rails (1.0.3)
+      railties (>= 3.1.0)
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
@@ -159,6 +168,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap (~> 4.1.1)
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
@@ -170,6 +180,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  toastr-rails
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

@@ -1,6 +1,8 @@
-<h1>로그인</h1>
-<%= form_tag do %>
-    <%= text_field_tag(:user_id) %>
-    <%= password_field_tag(:password) %>
-    <%= submit_tag("로그인") %>
+<%= form_tag('/sign_in', class: "form-signin") do %>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <%= label_tag(:user_id, "User Name", class: "sr-only") %>
+  <%= text_field_tag(:user_id, nil, class: "form-control", placeholder: "ID를 입력하세요", required: true, autofocus: true) %>
+  <%= label_tag(:password, "Password", class: "sr-only") %>
+  <%= password_field_tag(:password, nil, class: "form-control", placeholder: "비밀번호를 입력하세요", required: true) %>
+  <%= submit_tag("Sign in", class: "btn btn-lg btn-primary btn-block") %>
 <% end %>
